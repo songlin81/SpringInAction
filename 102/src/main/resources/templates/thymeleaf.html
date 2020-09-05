@@ -2,38 +2,53 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Spring Boot 2</title>
 </head>
 <body>
     <div th:text="${name}"></div>
 
-    <a th:href="@{http://www.cnn.com/}">绝对路径</a>
-    <a th:href="@{/}">相对路径</a>
-    <a th:href="@{/css/bootstrap.min.css}">Content路径，默认访问static下的css文件夹</a>
-
-    <span th:text="'欢迎您, ' + ${name} + '!'"></span>
-    <span th:text="|欢迎您 ${name}!|"></span>
-
-    <span th:text="2+3">2 + 3</span><br />
-    <span th:text="4%2">4 % 2</span><br />
-
-    <div th:if="${name} eq longzhonghua">
-        <span>欢迎您,管理员</span>
-    </div>
-    <div th:if="${name} eq zhonghua">
-        <span>欢迎您,vip会员</span>
+    <div>
+        <a th:href="@{http://www.cnn.com/}">absolute path CNN</a>
+        <a th:href="@{/}">Relative Path</a>
+        <a th:href="@{/css/bootstrap.min.css}">Content路径，默认访问static下的css文件夹</a>
     </div>
 
-    <div th:if="${age} lt 18">
-        <span>没成年</span>
+    <div>
+        <span th:text="'Welcome, ' + ${name} + '!'"></span>
+        <span th:text="|Welcome, ${name}!|"></span>
     </div>
 
-    <span th:if="${name} == null">为空</span>
-    <span th:if="${name} != null">不为空</span>
-    <span th:if="${#strings.isEmpty(name)}">空的</span>
-    <span th:if="${name} eq longzhonghua">相同</span>
-    <span th:if="${name} ne long">不相同</span>
-    <span th:text="${name} ?: '默认值'"></span>
-    <span th:if="${#strings.contains(name,'long')}">包含long</span>
+    <div>
+        <span th:text="2+3">2 + 3</span><br />
+        <span th:text="4%2">4 % 2</span><br />
+    </div>
+
+    <div>
+        <div th:if="${name} eq admin">
+            <span>admin</span>
+        </div>
+        <div th:if="${name} eq Song">
+            <span>member</span>
+        </div>
+    </div>
+
+    <div>
+        <div th:if="${age} lt 18">
+            <span>below 18</span>
+        </div>
+        <div th:if="${age} gt 18">
+            <span>above 18</span>
+        </div>
+    </div>
+
+    <div>
+        <span th:if="${name} == null">name is null</span>
+        <span th:if="${name} != null">name is not null</span>
+        <span th:if="${#strings.isEmpty(name)}">name is empty</span>
+        <span th:if="${name} eq Song">equal content</span>
+        <span th:if="${name} ne Song">not equal content</span>
+        <span th:text="${name} ?: 'default for name'"></span>
+        <span th:if="${#strings.contains(name,'ng')}">contains ng</span>
+    </div>
 </body>
 </html>
