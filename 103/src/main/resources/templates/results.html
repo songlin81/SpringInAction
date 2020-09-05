@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+    <div th:each="user: ${user}">
+        Congrad, <span th:text="${user.name}">Name</span> data submitted!
+        <div>your age:
+            <span th:text="${user.age}"></span></div>
+        <div>your email:
+            <span th:text="${user.email}"></span>
+        </div>
+    </div>
+</body>
+</html>

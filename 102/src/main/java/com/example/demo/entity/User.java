@@ -3,6 +3,7 @@ package com.example.demo.entity;
 public class User {
     private long id;
     private String name;
+    private int age;
 
     public long getId() {
         return id;
@@ -20,8 +21,22 @@ public class User {
         this.name = name;
     }
 
+    public long getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public User(long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public User(long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
     }
 }
