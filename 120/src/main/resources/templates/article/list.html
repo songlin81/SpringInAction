@@ -39,9 +39,9 @@
                     </tbody>
                 </table>
             </div>
-            <form id="deleteEmpForm" method="post">
-                <input type="hidden" name="_method" value="delete"/>
-            </form>
+<!--            <form id="deleteEmpForm" method="post">-->
+<!--                <input type="hidden" name="_method" value="delete"/>-->
+<!--            </form>-->
             <div>
                 <a th:href="@{/article(start=0)}">[First Page]</a>
                 <a th:if="${not page.isFirst()}" th:href="@{/article(start=${page.number-1})}">[Previous Page]</a>

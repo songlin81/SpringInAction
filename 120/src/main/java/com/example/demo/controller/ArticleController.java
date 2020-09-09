@@ -29,8 +29,6 @@ public class ArticleController {
         ModelAndView mav = new ModelAndView("article/list");
         mav.addObject("page", page);
 
-        System.out.println("init");
-
         return mav;
     }
 
@@ -69,9 +67,6 @@ public class ArticleController {
 
     @PostMapping("/{id}")
     public String editArticleSave(Article model, long id)  throws Exception{
-
-        System.out.println("PutMapping");
-
         model.setId(id);
         articleRepository.save(model);
         return "redirect:";
