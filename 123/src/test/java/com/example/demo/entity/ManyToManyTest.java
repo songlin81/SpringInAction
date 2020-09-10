@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.io.Console;
 import java.util.HashSet;
 import java.util.Set;
 import static org.junit.Assert.*;
@@ -48,5 +50,17 @@ public class ManyToManyTest {
         teacherRepository.save(teacher2);
     }
 
-    
+    @Test
+    public void testMore() {
+        long id=2;
+        Student student1 = studentRepository.findById(id);
+        Student student2 = studentRepository.getStudentByMySelf2("Song");
+        Student student3 = studentRepository.getStudentByMySelf("Vijay");
+
+        studentRepository.updateUserByGuid(2);
+        studentRepository.updateStudentById("Vijay4", 2);
+
+        Set<String> teachers = new HashSet<>();
+        teachers = studentRepository.getTeachersByStudent(2);
+    }
 }

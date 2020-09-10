@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
+import java.util.Set;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
     Student findById(long id);
@@ -15,16 +16,19 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("select a from Student a where a.name = ?1")
     Student getStudentByMySelf(String name);
 
-    @Query(value = "select * from stdu a where a.name = ?1",nativeQuery = true)
+    @Query(value = "select * from Student a where a.name = ?1",nativeQuery = true)
     Student getStudentByMySelf2(String name);
+
+    @Query(value = "SELECT teacher.name FROM book.student student JOIN book.teacher_student ts on student.id=ts.s_id JOIN book.teacher teacher on teacher.id=ts.t_id where student.id=?1",nativeQuery = true)
+    Set<String> getTeachersByStudent(long id);
 
     @Modifying
     @Transactional
     @Query(value = "update Student a set a.name = 'Vijay2' where a.id =:id")
-    void updataUserByGuid(@Param("id") long id);
+    void updateUserByGuid(@Param("id") long id);
 
     @Modifying
     @Transactional
     @Query(value = "update Student a set a.name = :name where a.id =:id")
-    void updataStudentById(@Param("name") String name, @Param("id") long id);
+    void updateStudentById(@Param("name") String name, @Param("id") long id);
 }
