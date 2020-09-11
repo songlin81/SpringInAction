@@ -11,7 +11,7 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE id = #{id}")
     User queryById(@Param("id") int id);
 
-    @Select("SELECT * FROM user limit 1000")
+    @Select("SELECT * FROM user")
     List<User> queryAll();
 
     @Insert({"INSERT INTO user(name,age) VALUES(#{name},#{age})"})
@@ -23,6 +23,6 @@ public interface UserMapper {
     @Update("UPDATE user SET name=#{name},age=#{age} WHERE id = #{id}")
     int updateById(User user);
 
-    @Select("SELECT * FROM user limit 1000")
+    @Select("SELECT * FROM user")
     Page<User> getUserList();
 }
