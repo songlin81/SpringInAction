@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>1</title>
+</head>
+<body>
+    <div class="with:80%">
+        <div th:each="u : ${page.list}">
+            <span scope="row" th:text="${u.id}">id</span>
+            <span th:text="${u.name}">name</span>
+        </div>
+    </div>
+    <div>
+        <a th:href="@{listall?start=1}">[First Page]</a>
+        <a  th:if="${not page.IsFirstPage}" th:href="@{/listall(start=${page.pageNum-1})}">[Previous Page]</a>
+        <a  th:if="${not page.IsLastPage}" th:href="@{/listall(start=${page.pageNum+1})}">[Next Page]</a>
+        <a th:href="@{/listall(start=${page.pages})}">[Last Page]</a>
+        <div>Current Page/Total Page：<a th:text="${page.pageNum}" th:href="@{/listall(start=${page.pageNum})}"></a>
+            /<a th:text="${page.pages}" th:href="@{/listall(start=${page.pages})}"></a></div>
+    </div>
+</body>
+</html>
