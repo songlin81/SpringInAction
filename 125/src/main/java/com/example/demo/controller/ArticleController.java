@@ -43,7 +43,6 @@ public class ArticleController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseData add(Article article) {
-        System.out.println("reached here...");
         articleRepository.save(article);
         return new ResponseData(ExceptionMsg.SUCCESS,article);
     }
