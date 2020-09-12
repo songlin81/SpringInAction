@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>UserInfo</title>
+    </head>
+    <body>
+        <h3>User Info Page</h3>
+        <div><span th:text="${name}"></span><span th:text="${Username}"></span></div>
+        <div>Current Role:</div>
+        <div th:each="ritem : ${RoleList}">
+            <span th:text="${ritem.description}">description</span>
+        </div>
+        User List:
+        <div th:each="item : ${page.content}">
+            <span th:text="${item.uid}">id</span>
+            <span th:text="${item.name}">name</span>
+            <span th:text="${item.username}">username</span>
+        </div>
+    </body>
+</html>
