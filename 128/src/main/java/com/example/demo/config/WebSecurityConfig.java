@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/", "/welcome", "/login").permitAll()
+                .antMatchers("/offlimits").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/home")
@@ -27,7 +28,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder())
                 .withUser("admin")
-                .password("$2a$10$X6Dupq5wi4/6H5darj7uqe0Bdkj2aN1aT64eDqa7QJka.Sjr3zOfW")
+                .password("$2a$10$9IJCv/aVaer7LdJj1dub5uu0Ga/Di4cH8cg.JiHh7lDXM3vEQMU/O")
+                .roles("ADMIN")
+                .and()
+                .withUser("v0cn140")
+                .password("$2a$10$/Lmc5/uEF.dCljMaE6nAkuhSJo2AGxsD6dRM1omRPsqzMdtgocwoK")
                 .roles("USER");
     }
 }

@@ -11,5 +11,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/home").setViewName("springsecurity/home");
         registry.addViewController("/").setViewName("springsecurity/welcome");
         registry.addViewController("/login").setViewName("springsecurity/login");
+        registry.addViewController("/offlimits").setViewName("springsecurity/offlimits");
     }
 }

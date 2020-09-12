@@ -4,6 +4,9 @@
 <head><title>home</title></head>
 <body>
     <p>Home page</p>
+    <p><a th:href="@{/offlimits}">Off limits zone</a></p>
+    <p sec:authorize="hasRole('ROLE_ADMIN')">Administrator</p>
+    <p sec:authorize="hasRole('ROLE_USER')">User</p>
     <p th:inline="text">Hello <span sec:authentication="name"></span></p>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Log out"/>

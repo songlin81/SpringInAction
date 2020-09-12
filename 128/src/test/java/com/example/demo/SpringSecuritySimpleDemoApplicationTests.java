@@ -15,5 +15,7 @@ public class SpringSecuritySimpleDemoApplicationTests {
 		BCryptPasswordEncoder encoder =new BCryptPasswordEncoder();
 		String encodePassword = encoder.encode("Song");
 		System.out.println(encodePassword);
+		encodePassword = encoder.encode("123456");
+		System.out.println(encodePassword);
 	}
 }
